@@ -1,0 +1,17 @@
+﻿@using HikingProject.Models
+@model List<HikingProject.Models.Hikes>
+@{
+}
+<div class="row">
+    @foreach (var item in Model)
+    {
+        <p href="#" class="card border m-2 text-center" style="width: 7rem;">
+            <div class="card-body">
+                @foreach (var i in item)
+                {
+                    <p class="card-text">@i</p>
+                }
+            </div>
+        </p> 
+    }
+</div>

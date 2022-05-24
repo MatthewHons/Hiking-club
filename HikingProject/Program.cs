@@ -1,5 +1,12 @@
+using HikingProject.Models;
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
 
+string connString = builder.Configuration.GetConnectionString("DefaultContext");
+
+builder.Services.AddDbContext <DefaultContext> (options =>
+    options.UseSqlServer(connString));
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
