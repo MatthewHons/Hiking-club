@@ -18,5 +18,6 @@ namespace HikingProject.Models
         public double distance { get; set; }
         public int duration { get; set; }
         public int elevation_gain { get; set; }
+        //public int link { get; set; }
     }
 }

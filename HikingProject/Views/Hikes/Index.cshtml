@@ -5,14 +5,26 @@
 <div class="row">
     @foreach (var item in Model)
     {
-        <p href="#" class="card border m-2 text-center" style="width: 7rem;">
-            <div class="card-body">
-                <a asp-action="Update" asp-route-id="@item.ID" class="card-text">@item.name</a>
-                <p class="card-text">@item.difficulty</p>
-                <p class="card-text">@item.distance</p>
-                <p class="card-text">@item.duration</p>
-                <p class="card-text">@item.elevation_gain</p>
-            </div>
-        </p> 
+
+        <div class="card" style="width: 18rem;">
+            <img class="card-img-top" src="ressources/image/" alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title">@item.name</h5>
+                        <p class="card-text">@item.difficulty</p>
+                        <p class="card-text">@item.distance</p>
+                        <p class="card-text">@item.duration</p>
+                        <p class="card-text">@item.elevation_gain</p>
+                        <a asp-action="Update" asp-route-id="@item.ID" class="btn btn-primary">Edit your hike</a>
+                        <a asp-action="Delete" asp-route-id="@item.ID" class="btn btn-danger">Delete</a>
+                        @{
+                            if(ViewBag.DeleteSuccessMessage != null)
+                            {
+                                <div class="center-block text-success">
+                                    @ViewBag.DeleteSuccessMessage
+                                </div>
+                            }
+                        }
+                    </div>
+                </div>
     }
 </div>

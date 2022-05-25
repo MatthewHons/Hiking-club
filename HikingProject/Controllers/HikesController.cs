@@ -15,7 +15,6 @@ namespace HikingProject.Controllers
         [HttpGet]
         public ActionResult Index()
         {
-
             var query = from item in _context.Hike select item;
             return View(query.ToList());
         }
@@ -29,11 +28,10 @@ namespace HikingProject.Controllers
         {
             if (ModelState.IsValid)
             {
-                _context.Hike?.Add(hikes);
+                _context.Hike.Add(hikes);
                 _context.SaveChanges();
 
                 ViewBag.SuccessMessage = "The hike has been created sucessfully!";
-                ModelState.Clear();
             }
             return View();
         }
@@ -50,8 +48,7 @@ namespace HikingProject.Controllers
         [HttpPost]
         public ActionResult Update(Hikes hikes)
         {
-                
-
+            
                 if (ModelState.IsValid)
                 {
                     this._context.Hike.Update(hikes);
@@ -62,5 +59,29 @@ namespace HikingProject.Controllers
                 return View();
 
         }
+        [HttpGet]
+        public ActionResult Delete(int id)
+        {
+            Hikes hikes = null;
+
+            hikes = _context.Hike.First(item => item.ID == id);
+            if (ModelState.IsValid)
+            {
+                _context.Hike.Remove(hikes);
+                _context.SaveChanges();
+                ViewBag.DeleteSuccessMessage = "The hike has been deleted sucessfully!";
+            }
+            
+            return RedirectToAction("Index");
+        }
+        //[HttpPost]
+        //public ActionResult Delete(Hikes hikes)
+        //{
+        //         _context.Hike.Remove(hikes);
+        //        _context.SaveChanges();
+        //        ViewBag.DeleteSuccessMessage = "The hike has been deleted sucessfully!";
+        //        return RedirectToAction("Update");
+        //}
     }
 }
+
