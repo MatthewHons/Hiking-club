@@ -16,7 +16,7 @@ namespace HikingProject.Models
 
         #region Properties
 
-        public DbSet<Hikes> Hike { get; set; }
+        public DbSet<Hikes>? Hike { get; set; }
         #endregion
     }
 }

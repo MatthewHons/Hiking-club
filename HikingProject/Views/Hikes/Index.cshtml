@@ -7,10 +7,11 @@
     {
         <p href="#" class="card border m-2 text-center" style="width: 7rem;">
             <div class="card-body">
-                @foreach (var i in item)
-                {
-                    <p class="card-text">@i</p>
-                }
+                <a asp-action="Update" asp-route-id="@item.ID" class="card-text">@item.name</a>
+                <p class="card-text">@item.difficulty</p>
+                <p class="card-text">@item.distance</p>
+                <p class="card-text">@item.duration</p>
+                <p class="card-text">@item.elevation_gain</p>
             </div>
         </p> 
     }

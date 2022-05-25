@@ -11,9 +11,9 @@ namespace HikingProject.Models
         [Key]
         public int ID { get; set; }
         
-        public string name { get; set; }
+        public string? name { get; set; }
         
-        public string difficulty { get; set; }
+        public string? difficulty { get; set; }
         
         public double distance { get; set; }
         public int duration { get; set; }
