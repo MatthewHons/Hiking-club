@@ -30,10 +30,8 @@ namespace HikingProject.Controllers
             {
                 _context.Hike.Add(hikes);
                 _context.SaveChanges();
-
-                ViewBag.SuccessMessage = "The hike has been created sucessfully!";
             }
-            return View();
+            return RedirectToAction("Index");
         }
         [HttpGet]
         public ActionResult Update(int id)
@@ -53,10 +51,8 @@ namespace HikingProject.Controllers
                 {
                     this._context.Hike.Update(hikes);
                     _context.SaveChanges();
-
-                    ViewBag.UpdateSuccessMessage = "The hike has been updated sucessfully!";
                 }
-                return View();
+                return RedirectToAction("Index");
 
         }
         [HttpGet]
@@ -69,19 +65,12 @@ namespace HikingProject.Controllers
             {
                 _context.Hike.Remove(hikes);
                 _context.SaveChanges();
-                ViewBag.DeleteSuccessMessage = "The hike has been deleted sucessfully!";
             }
             
             return RedirectToAction("Index");
+            
         }
-        //[HttpPost]
-        //public ActionResult Delete(Hikes hikes)
-        //{
-        //         _context.Hike.Remove(hikes);
-        //        _context.SaveChanges();
-        //        ViewBag.DeleteSuccessMessage = "The hike has been deleted sucessfully!";
-        //        return RedirectToAction("Update");
-        //}
+     
     }
 }
 
