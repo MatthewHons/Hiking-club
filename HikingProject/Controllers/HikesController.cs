@@ -30,6 +30,7 @@ namespace HikingProject.Controllers
             {
                 _context.Hike.Add(hikes);
                 _context.SaveChanges();
+
             }
             return RedirectToAction("Index");
         }
@@ -38,7 +39,7 @@ namespace HikingProject.Controllers
         {
             Hikes hikes = null;
             
-            hikes = this._context.Hike.First(item => item.ID == id);
+            hikes = _context.Hike.First(item => item.ID == id);
 
             return View(hikes);
         }
@@ -49,7 +50,7 @@ namespace HikingProject.Controllers
             
                 if (ModelState.IsValid)
                 {
-                    this._context.Hike.Update(hikes);
+                    _context.Hike.Update(hikes);
                     _context.SaveChanges();
                 }
                 return RedirectToAction("Index");
@@ -61,16 +62,20 @@ namespace HikingProject.Controllers
             Hikes hikes = null;
 
             hikes = _context.Hike.First(item => item.ID == id);
-            if (ModelState.IsValid)
-            {
+            
+            
+            return View(hikes);
+        }
+        [HttpPost]
+        public ActionResult Delete(Hikes hikes)
+        {
+            
                 _context.Hike.Remove(hikes);
                 _context.SaveChanges();
-            }
-            
-            return RedirectToAction("Index");
-            
+
+                return RedirectToAction("Index");
         }
-     
     }
 }
+
 

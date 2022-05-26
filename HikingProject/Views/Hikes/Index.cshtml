@@ -16,14 +16,6 @@
                         <p class="card-text">@item.elevation_gain</p>
                         <a asp-action="Update" asp-route-id="@item.ID" class="btn btn-primary">Edit your hike</a>
                         <a asp-action="Delete" asp-route-id="@item.ID" class="btn btn-danger">Delete</a>
-                        @{
-                            if(ViewBag.DeleteSuccessMessage != null)
-                            {
-                                <div class="center-block text-success">
-                                    @ViewBag.DeleteSuccessMessage
-                                </div>
-                            }
-                        }
                     </div>
                 </div>
     }
