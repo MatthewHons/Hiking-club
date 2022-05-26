@@ -1,22 +1,21 @@
 ﻿@using HikingProject.Models
+@using Microsoft.EntityFrameworkCore.Metadata.Internal
 @model List<HikingProject.Models.Hikes>
-@{
-}
 <div class="row">
     @foreach (var item in Model)
     {
 
         <div class="card" style="width: 18rem;">
-            <img class="card-img-top" src="ressources/image/" alt="Card image cap">
-                    <div class="card-body">
-                        <h5 class="card-title">@item.name</h5>
-                        <p class="card-text">@item.difficulty</p>
-                        <p class="card-text">@item.distance</p>
-                        <p class="card-text">@item.duration</p>
-                        <p class="card-text">@item.elevation_gain</p>
-                        <a asp-action="Update" asp-route-id="@item.ID" class="btn btn-primary">Edit your hike</a>
-                        <a asp-action="Delete" asp-route-id="@item.ID" class="btn btn-danger">Delete</a>
-                    </div>
+            <img class="card-img-top" src="ressources/image/@(item.link).jpeg" alt="Card image cap">
+            <div class="card-body">
+                <h5 class="card-title">@item.name</h5>
+                <p class="card-text"><img src="https://www.visorando.be/img/fiches/difficulte-moyenne.min.png" title="Moyenne" alt="Moyenne" height="28" width="28">@item.difficulty</p>
+                <p class="card-text"><img src="https://www.visorando.be/img/fiches/distance.min.png" title="Distance" alt="Distance" height="28" width="28">@item.distance km</p>
+                <p class="card-text"><img src="https://www.visorando.be/img/fiches/duree.min.png" title="Durée" alt="Durée" height="28" width="28">@item.duration minutes</p>
+                <p class="card-text"><img src="https://www.visorando.be/img/fiches/denivele-plus.min.png" title="Dénivelé positif" alt="Dénivelé positif" height="28" width="28">@item.elevation_gain m</p>
+                <a asp-action="Update" asp-route-id="@item.ID" class="btn btn-primary">Modifier</a>
+                <a asp-action="Delete" asp-route-id="@item.ID" class="btn btn-danger">Supprimer</a>
+            </div>
                 </div>
     }
 </div>
