@@ -27,7 +27,7 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddAuthentication().AddFacebook(options =>
 {
     options.AppId = builder.Configuration["apis:facebook:id"];
-    options.AppSecret = builder.Configuration["apis:facebook:secret"];
+    options.AppSecret = builder.Configuration["apis:facebook:secret"];  
 });
 
 var app = builder.Build();

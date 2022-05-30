@@ -13,6 +13,9 @@
                 <p class="card-text"><img src="https://www.visorando.be/img/fiches/distance.min.png" title="Distance" alt="Distance" height="28" width="28">@item.distance km</p>
                 <p class="card-text"><img src="https://www.visorando.be/img/fiches/duree.min.png" title="Durée" alt="Durée" height="28" width="28">@item.duration minutes</p>
                 <p class="card-text"><img src="https://www.visorando.be/img/fiches/denivele-plus.min.png" title="Dénivelé positif" alt="Dénivelé positif" height="28" width="28">@item.elevation_gain m</p>
+                <p class="card-text">@item.created_at</p>
+                <p class="card-text">@item.province</p>
+
                 <a asp-action="Update" asp-route-id="@item.ID" class="btn btn-primary">Modifier</a>
                 <a asp-action="Delete" asp-route-id="@item.ID" class="btn btn-danger">Supprimer</a>
             </div>

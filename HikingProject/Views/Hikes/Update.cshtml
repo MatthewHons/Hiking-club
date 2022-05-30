@@ -1,6 +1,7 @@
 ﻿@model HikingProject.Models.Hikes
 
 @{
+    DateTime localDate = DateTime.Now;
     ViewData["Title"] = "Create";
 }
 
@@ -13,18 +14,19 @@
             
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                <label asp-for="link" class="control-label">Entrez un nombre entre 1 et 43 pour modifier l'image</label>
-                <textarea asp-for="link" class="form-control"></textarea>
-                <span asp-validation-for="link" class="text-danger"></span>
-            </div>
-            <div class="form-group">
                 <label asp-for="name" class="control-label">Intitulé</label>
                 <textarea asp-for="name" class="form-control"></textarea>
                 <span asp-validation-for="name" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="difficulty" class="control-label">Difficulté</label>
-                <input asp-for="difficulty" class="form-control">
+                <label asp-for="difficulty" for="difficulty" class="control-label">Difficulté</label>
+                <select asp-for="difficulty" class="form-control" id="difficulty" name="difficulty">
+                    <option value="Très facile">Très facile</option>
+                    <option value="Facile">Facile</option>
+                    <option value="Moyen">Moyen</option>
+                    <option value="Difficile">Difficile</option>
+                    <option value="Très difficile">Très difficile</option>
+                </select>
                 <span asp-validation-for="difficulty" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -42,6 +44,19 @@
                 <input type="number" asp-for="elevation_gain" class="form-control" cols="80" rows="10">
                 <span asp-validation-for="elevation_gain" class="text-danger"></span>
             </div>
+            <div class="form-group">
+                <input type="hidden" class="form-control" cols="80" rows="10" asp-for="created_at" value="@localDate">
+                <span asp-validation-for="created_at" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="hidden" class="form-control" cols="80" rows="10" asp-for="province">
+                <span asp-validation-for="province" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="hidden" class="form-control" cols="80" rows="10" asp-for="link">
+                <span asp-validation-for="link" class="text-danger"></span>
+            </div>
+
             <div class="form-group">
                 <input type="submit" value="Update" class="btn btn-primary"/>
             </div>

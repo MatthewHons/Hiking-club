@@ -21,5 +21,9 @@ namespace HikingProject.Models
         public int elevation_gain { get; set; }
         [Range(1, 43)]
         public int link { get; set; }
+        [Required]
+        public DateTime created_at { get; set; }
+        [Required]
+        public string province { get; set; }
     }
 }
