@@ -2,9 +2,37 @@
 @using Microsoft.EntityFrameworkCore.Metadata.Internal
 @model List<HikingProject.Models.Hikes>
 <div class="row">
+    @if(@TempData["Delete"]  != null )
+    {
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <strong>@TempData["Delete"]</strong>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    }
+    else if(@TempData["Success"]  != null )
+    {
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <strong>@TempData["Success"]</strong>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    }
+    else if(@TempData["Update"]  != null )
+    {
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <strong>@TempData["Update"]</strong>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    }
+    else if(@TempData["Fail"]  != null )
+    {
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            <strong>@TempData["Fail"]</strong>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    }
+
     @foreach (var item in Model)
     {
-
         <div class="card" style="width: 18rem;">
             <img class="card-img-top" src="ressources/image/@(item.link).jpeg" alt="Card image cap">
             <div class="card-body">
@@ -16,9 +44,10 @@
                 <p class="card-text">@item.created_at</p>
                 <p class="card-text">@item.province</p>
 
+
                 <a asp-action="Update" asp-route-id="@item.ID" class="btn btn-primary">Modifier</a>
                 <a asp-action="Delete" asp-route-id="@item.ID" class="btn btn-danger">Supprimer</a>
             </div>
-                </div>
+        </div>
     }
 </div>

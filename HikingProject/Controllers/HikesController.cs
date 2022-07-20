@@ -28,9 +28,13 @@ namespace HikingProject.Controllers
         {
             if (ModelState.IsValid)
             {
-                _context.Hike.Add(hikes);
+                _context.Hike?.Add(hikes);
                 _context.SaveChanges();
-
+                TempData["Success"] = "Randonnée créer avec succès ! ";
+            }
+            else
+            {
+                TempData["Fail"] = "Echec dans la création ! ";
             }
             return RedirectToAction("Index");
         }
@@ -52,6 +56,11 @@ namespace HikingProject.Controllers
                 {
                     _context.Hike.Update(hikes);
                     _context.SaveChanges();
+                    TempData["Update"] = "Votre randonnée a été modifée ! ";
+                }
+                else
+                {
+                    TempData["Fail"] = "Echec dans la modification ! ";
                 }
                 return RedirectToAction("Index");
 
@@ -72,7 +81,7 @@ namespace HikingProject.Controllers
             
                 _context.Hike.Remove(hikes);
                 _context.SaveChanges();
-
+                TempData["Delete"] = "Votre randonnée a été supprimée ! ";
                 return RedirectToAction("Index");
         }
     }

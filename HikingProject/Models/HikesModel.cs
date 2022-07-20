@@ -9,11 +9,11 @@ namespace HikingProject.Models
         //ID venant de la base
         [Key]
         public int ID { get; set; }
-        [Required]
+         [Required]
         public string? name { get; set; }
         [Required]
         public string? difficulty { get; set; }
-        [Range(1,10000)]
+        [Range(1,1000)]
         public double distance { get; set; }
         [Range(1,5000)]
         public int duration { get; set; }
